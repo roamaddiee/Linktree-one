@@ -186,6 +186,25 @@
                 margin-left: 0;
                 margin-bottom: 0;
             }
+
+            .eyes-container {
+                width: 56px;
+            }
+
+            .eye {
+                width: 19px;
+                height: 19px;
+            }
+
+            .pupil {
+                width: 15px;
+                height: 15px;
+            }
+
+            .pupil::after {
+                width: 6px;
+                height: 6px;
+            }
         }
     </style>
 </head>
@@ -288,9 +307,8 @@
                 }
             }
 
-            if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
-                setInterval(draw, 40);
-            }
+            const isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+            setInterval(draw, isTouchDevice ? 60 : 40);
         })();
 
         // Eye Tracking Animation
